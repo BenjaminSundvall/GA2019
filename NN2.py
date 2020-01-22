@@ -10,10 +10,8 @@ class FirstNN(object):
         self.hiddenLayerSize = 3
 
         # Weights
-        self.W1 = np.random.randn(self.inputLayerSize, \
-                                 self.hiddenLayerSize)
-        self.W2 = np.random.randn(self.hiddenLayerSize, \
-                                  self.outputLayerSize)
+        self.W1 = np.random.randn(self.inputLayerSize, self.hiddenLayerSize)
+        self.W2 = np.random.randn(self.hiddenLayerSize, self.outputLayerSize)
 
     def forward(self, X):
         # Propagate inputs through network
