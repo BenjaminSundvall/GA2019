@@ -24,6 +24,20 @@ class FirstNN(object):
     def sigmoid(z):
         return 1 / (1 + np.exp(-z))
 
+    def sigmoidPrime(z):
+        return np.exp(-z) / ((1 + np.exp(-z))**2)
+
+    def costFunctionPrime(self, X, y):
+        self.yHat = self.forward(X)
+
+        delta3 = np.multiply(-(y-self.yHat), self.sigmoidPrime(self.z3))
+        dJdW2 = np.dot(self.a2.T, delta3)
+
+        delta2 = np.dot(delta3, self.w2.T)*self.sigmoidPrime(self.z2)
+        dJdW1 = np.dot(X.T, delta2)
+
+        return dJdW1, dJdW2
+
     '''
     testInput = np.arange(-6, 6, 0.01)
     plt.plot(testInput, sigmoid(testInput), linewidth=2)
