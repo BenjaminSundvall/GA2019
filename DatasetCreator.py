@@ -5,7 +5,7 @@ import cv2
 import random
 import pickle
 
-DATADIR = "/home/benjamin/Datasets/GA"
+DATADIR = "C:/Users/Sundvall/Documents/Datasets"
 CATEGORIES = ['H', 'S', 'U']
 # CATEGORIES = ['H']
 
@@ -18,7 +18,10 @@ def create_training_data():
     n = 0
     for category in CATEGORIES:
         path = os.path.join(DATADIR, category)
-        class_num = CATEGORIES.index(category)  # labeling???
+        class_num = [0, 0, 0]
+        class_num[CATEGORIES.index(category)] = 1
+
+        # class_num = CATEGORIES.index(category)  # labeling???
         for img in os.listdir(path):
             try:
                 img_array = cv2.imread(os.path.join(path, img), cv2.IMREAD_GRAYSCALE)
@@ -39,7 +42,7 @@ def create_training_data():
             X.append(features)
             y.append(label)
 
-        X = np.array(X).reshape(-1, IMG_SIZE, IMG_SIZE, 1)
+        X = np.array(X).reshape(-1, IMG_SIZE, IMG_SIZE, 1)/255.0
 
         y = np.array(y)
 
