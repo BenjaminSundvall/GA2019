@@ -6,7 +6,7 @@ import random
 import pickle
 
 DATADIR = "C:/Users/Sundvall/Documents/Datasets"
-CATEGORIES = ['H', 'S', 'U']
+CATEGORIES = ['H', 'S', 'U', 'N']
 # CATEGORIES = ['H']
 
 IMG_SIZE = 64
@@ -18,7 +18,7 @@ def create_training_data():
     n = 0
     for category in CATEGORIES:
         path = os.path.join(DATADIR, category)
-        class_num = [0, 0, 0]
+        class_num = [0, 0, 0, 0]
         class_num[CATEGORIES.index(category)] = 1
 
         # class_num = CATEGORIES.index(category)  # labeling???
